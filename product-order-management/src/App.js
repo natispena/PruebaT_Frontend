@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ProveedorApp } from './contexto/ContextoApp';
+import ListadoProductos from './paginas/ListadoProductos';
+import ListadoPedidos from './paginas/ListadoPedidos';
+import FormularioProducto from './paginas/formularioProducto';
+import FormularioPedido from './paginas/formularioPedidos';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProveedorApp>
+      <Router>
+        <div className="p-4">
+          <Routes>
+            <Route path="/" element={<ListadoProductos />} />
+            <Route path="/productos/nuevo" element={<FormularioProducto />} />
+            <Route path="/pedidos/nuevo" element={<FormularioPedido />} />
+            <Route path="/pedidos" element={<ListadoPedidos />} />
+          </Routes>
+        </div>
+      </Router>
+    </ProveedorApp>
   );
-}
+};
 
 export default App;
